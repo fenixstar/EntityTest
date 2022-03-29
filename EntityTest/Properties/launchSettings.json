@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EntityTest": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\fenix\\source\\repos\\EntityTest\\EntityTest\\config\\App.config"
+    }
+  }
+}
