@@ -23,6 +23,10 @@ namespace EntityTest
             modelBuilder.ApplyConfiguration(new NationalityInfoConfiguration());
             modelBuilder.ApplyConfiguration(new InternationalPassportInfoVisaInfoConfiguration());
 
+            modelBuilder.Entity<InternationalPassportInfo>().HasOne(ip => ip.PassportInfo)
+                .WithOne(pi => pi.InternationalPassportInfo)
+                .HasForeignKey<InternationalPassportInfo>(x => x.PassportInfoKey);
+
         }
     }
 }
