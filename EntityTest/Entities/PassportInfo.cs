@@ -2,10 +2,10 @@
 {
     public class PassportInfo
     {
-        public int PassportId { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
-        public InternationalPassportInfo internationalPassportInfo { get; set; }
-        public NationalityInfo nationalityInfo { get; set; }
+        public InternationalPassportInfo? InternationalPassportInfo { get; set; }
+        public NationalityInfo NationalityInfos { get; set; }
     }
 }

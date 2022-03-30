@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EntityTest
+﻿namespace EntityTest
 {
     public  class VisaInfo
     {
-        public int VisaID { get; set; }
-        public InternationalPassportInfo InternationalPassportInfo { get; set; }
+        public int Id { get; set; }        
+
         public DateTime VisaStart { get; set; }
+
         public DateTime VisaEnd { get; set; }
+
+        //public ICollection<InternationalPassportInfo> InternationalPassportInfo { get; set; }
+        public ICollection<InternationalPassportInfoVisaInfo> InternationalPassportInfoVisaInfos { get; set; }
+
+        public VisaInfo()
+        {
+            //InternationalPassportInfo = new HashSet<InternationalPassportInfo>();
+            InternationalPassportInfoVisaInfos = new HashSet<InternationalPassportInfoVisaInfo>();
+        }
 
     }
 }
