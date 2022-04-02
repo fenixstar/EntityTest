@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Library;
 
 namespace EntityTest
 {
-    class Program
+    class Program 
     {
         static void Main(string[] args)
         {
@@ -12,11 +13,15 @@ namespace EntityTest
 
             var config = configurationBuilder.Build();
 
-            var options = new DbContextOptionsBuilder<AppContext>()
+            var options = new DbContextOptionsBuilder<ApplicationContext>()
                 .UseNpgsql(config.GetConnectionString("main"))
                 .Options;
-            var ctx = new AppContext(options);
+            var ctx = new ApplicationContext(options);
             ctx.InitializeDb();
+            DataLayer.EmulateData(ctx); 
+            var bus = new BuisnessLogicLayer();
+            bus.ChangeNameInPassport("Tony", 1, ctx);
+            bus.CreatePassport("Vladimir", "Mitrofanov",1, ctx);
         }
     }
 

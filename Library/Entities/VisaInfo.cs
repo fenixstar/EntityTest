@@ -1,4 +1,4 @@
-﻿namespace EntityTest
+﻿namespace Library
 {
     public  class VisaInfo
     {

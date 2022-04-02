@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-namespace EntityTest
+namespace Library
 {
     public class InternationalPassportInfoVisaInfoConfiguration : IEntityTypeConfiguration<InternationalPassportInfoVisaInfo>
     {
@@ -10,11 +10,13 @@ namespace EntityTest
             
             builder.HasOne(ipv => ipv.InternationalPassportInfo)
                 .WithMany(ip => ip.InternationalPassportInfoVisaInfos)
-                .HasForeignKey(ipv => ipv.InternationalPassportId);
+                .HasForeignKey(ipv => ipv.InternationalPassportId)
+                .OnDelete(DeleteBehavior.Cascade); ;
 
             builder.HasOne(ipv => ipv.VisaInfo)
                 .WithMany(v => v.InternationalPassportInfoVisaInfos)
-                .HasForeignKey(ipv => ipv.VisaInfoId);
+                .HasForeignKey(ipv => ipv.VisaInfoId)
+                .OnDelete(DeleteBehavior.Cascade); ;
         }
     }
 }

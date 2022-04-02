@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EntityTest
+namespace Library
 {
     public class PassportInfoConfiguration : IEntityTypeConfiguration<PassportInfo>
     {

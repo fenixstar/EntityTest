@@ -1,15 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-namespace EntityTest
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
+
+namespace Library
 {
-    public class AppContext: DbContext
-    {
-        private string ConfigString;
+    public class ApplicationContext: DbContext
+    { 
         public DbSet<PassportInfo> Passports { get; set; } = null!;
-        public DbSet<InternationalPassportInfo> internationalPassportInfos { get; set; } = null!;
+        public DbSet<InternationalPassportInfo> InternationalPassportInfos { get; set; } = null!;
         public DbSet<NationalityInfo> NationalityInfos { get; set; } = null!;
         public DbSet<VisaInfo> VisaInfos { get; set; } = null!;
 
-        public AppContext(DbContextOptions<AppContext> options)
+        public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
             
@@ -20,13 +22,8 @@ namespace EntityTest
             modelBuilder.ApplyConfiguration(new PassportInfoConfiguration());
             modelBuilder.ApplyConfiguration(new NationalityInfoConfiguration());   
             modelBuilder.ApplyConfiguration(new VisaInfoConfiguration());
-            modelBuilder.ApplyConfiguration(new NationalityInfoConfiguration());
+            modelBuilder.ApplyConfiguration(new InternationalPassportInfoConfiguration());
             modelBuilder.ApplyConfiguration(new InternationalPassportInfoVisaInfoConfiguration());
-
-            modelBuilder.Entity<InternationalPassportInfo>().HasOne(ip => ip.PassportInfo)
-                .WithOne(pi => pi.InternationalPassportInfo)
-                .HasForeignKey<InternationalPassportInfo>(x => x.PassportInfoKey);
-
         }
     }
 }
